@@ -1,24 +1,37 @@
 // Experience.jsx
+// Displays detailed experience entries using data.js.
+// Developer note: add more 'experiences' in data.js when you want to expand.
+
 import React from "react";
+import { experiences } from "../data";
+
+const ExperienceItem = ({ item }) => {
+  return (
+    <div className="card">
+      <div className="exp-role">
+        <div>
+          <h3>{item.title} — {item.company}</h3>
+          <div className="exp-meta">{item.location} · {item.date}</div>
+        </div>
+      </div>
+
+      <ul className="clean">
+        {item.bullets.map((b, idx) => (
+          <li key={idx}>{b}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Experience = () => {
   return (
-    <section className="section">
+    <section className="section left">
       <h2>Work Experience</h2>
-      <ul>
-        <li>
-          <strong>Senior Software Engineer</strong> - Tech Mahindra (Expedia)  
-          <p>Built Kotlin microservice for Price Summary handling 5M daily users, migrated REST → gRPC, reduced latency 40%.</p>
-        </li>
-        <li>
-          <strong>Senior Software Engineer</strong> - Infosys (Allstate)  
-          <p>Expanded backend APIs for AllState Boat products, automated validations, improved underwriting processes.</p>
-        </li>
-        <li>
-          <strong>Software Engineer</strong> - Infosys  
-          <p>Backend APIs processing 1000+ policy checks/day, 95%+ code coverage, seamless legacy integration.</p>
-        </li>
-      </ul>
+
+      {experiences.map((exp, idx) => (
+        <ExperienceItem item={exp} key={idx} />
+      ))}
     </section>
   );
 };

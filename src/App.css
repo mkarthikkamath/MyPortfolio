@@ -1,34 +1,292 @@
-/* App.css */
-/* General styling for entire site */
-body {
+/* App.css — cleaned and theme-awares */
+
+/* -------------------------
+   Themeable variables (single :root)
+   ------------------------- */
+/* -------------------------
+   Themeable variables (single :root)
+   ------------------------- */
+:root {
+  --max-width: 1100px;
+  --content-pad: 20px;
+  --radius: 12px;
+
+  /* colors (dark defaults) */
+  --bg: #242424;
+  --card-bg: rgba(255,255,255,0.02);
+  --text: #e6eef6;
+  --muted: #9aa4b2;
+  --accent: #6ee7b7;
+  --accent-2: #60a5fa;
+
+  /* card border and shadow - tuned for dark mode */
+  --card-border: rgba(255,255,255,0.02);
+  --card-shadow: 0 8px 30px rgba(2,6,23,0.6);
+
+  /* buttons */
+  --btn-bg: linear-gradient(90deg, var(--accent-2), var(--accent));
+  --btn-text: #021226;
+
+  /* glass */
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Floating Theme Toggle */
+.theme-toggle-float {
+  position: fixed;
+  top: 20px;
+  right: 35px;
+  z-index: 999;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Light theme overrides (applied when .theme-light on <html>) */
+.theme-light {
+  --bg: #f7fafc;
+  --card-bg: #ffffff;
+  --text: #0b1220;
+  --muted: #64748b;
+  --btn-text: #ffffff;
+  --btn-bg: linear-gradient(90deg, #60a5fa, #7dd3fc);
+
+  /* stronger card border and lighter shadow in light mode */
+  --card-border: rgba(15, 23, 42, 0.06); /* subtle bluish-gray border so cards stand out on white */
+  --card-shadow: 0 6px 18px rgba(12,20,34,0.06);
+}
+
+/* Dark explicit theme */
+.theme-dark {
+  --bg: #0b1220;
+  --card-bg: rgba(255,255,255,0.02);
+  --text: #e6eef6;
+  --muted: #9aa4b2;
+  --btn-bg: linear-gradient(90deg, #60a5fa, #6ee7b7);
+  --btn-text: #021226;
+  --card-border: rgba(255,255,255,0.02);
+  --card-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
+/* -------------------------
+   Card visual (use the new vars)
+   ------------------------- */
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--card-border); /* themable border */
+  box-shadow: var(--card-shadow);       /* themable shadow */
+  color: var(--text);
+}
+
+/* Also apply subtle border to the right-card so it stays visible in light theme */
+.right-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: var(--content-pad);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  position: sticky;
+  top: 32px;
+}
+
+/* -------------------------
+   Global layout
+   ------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body, #root {
+  min-height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-.App {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h2 {
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 5px;
-  margin-top: 40px;
-  color: #444;
-}
-
-.section {
-  margin: 20px 0;
-}
-
-ul {
-  list-style-type: none;
   padding: 0;
 }
 
-li {
-  margin: 5px 0;
+/* Use only the variable-based bg so theme takes effect everywhere */
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* page container: fixed max-width to avoid filling entire screen */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--card-bg);            /* theme-aware */
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* -------------------------
+   Header / Avatar / Title
+   ------------------------- */
+.header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* avatar */
+.avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: #021226;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(14,34,58,0.45);
+}
+
+/* title block */
+.header .title { flex: 1; min-width: 0; }
+.header h1 { margin: 0; font-size: 26px; letter-spacing: -0.4px; }
+.header p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+/* chips and buttons */
+.contact-row { display:flex; gap:12px; margin-top:10px; flex-wrap:wrap; align-items:center; }
+.chip {
+  background: var(--glass);
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+  border: none;
+}
+.chip:hover { background: rgba(255,255,255,0.03); color: var(--text); }
+
+/* actions area on right (Resume / Theme) */
+.header-actions { margin-left: auto; display:flex; gap:12px; align-items:center; }
+
+/* -------------------------
+   Main layout (two columns)
+   ------------------------- */
+main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+/* left column sections */
+.left { background: transparent; }
+
+/* right column card (contact etc) */
+.right-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: var(--content-pad);
+  border: 1px solid rgba(255,255,255,0.03);
+  position: sticky;
+  top: 32px;
+}
+
+.justified-paragraph {
+  color: var(--muted);           /* uses theme */
+  line-height: 1.6;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+/* ensure contact-card has padding so contents don't touch left edge */
+.contact-card { padding: 0; } /* we are already using right-card padding; keep internal margins below */
+.contact-card p, .contact-card a { color: var(--muted); font-size: 14px; margin: 8px 0; text-decoration: none; padding-left: 4px; }
+
+/* section headers */
+.section { margin-bottom: 18px; }
+.section h2 { margin: 0 0 12px 0; font-size: 18px; color: var(--text); }
+
+/* cards inside sections */
+.card {
+  background: rgba(255,255,255,0.01);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.02);
+  color: var(--text);
+}
+
+/* Experience / projects */
+.exp-role { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+.exp-role h3 { margin:0; font-size:15px; }
+.exp-meta { color: var(--muted); font-size:13px; }
+
+/* bullets */
+ul.clean { margin:10px 0 0 0; padding-left:18px; color: var(--muted); }
+ul.clean li { margin:6px 0; }
+
+/* project list */
+.project-list { display:grid; gap:12px; }
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+
+  /* Use theme variables so the card changes with theme */
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  color: var(--text);
+}
+.project .meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project .btn {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(14,34,58,0.25);
+}
+.btn.secondary {
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* footer */
+.footer { margin-top: 28px; display:flex; align-items:center; gap:12px; }
+.footer small { flex: 1; text-align: center; }
+
+/* responsive */
+@media (max-width: 980px) {
+  main { grid-template-columns: 1fr; }
+  .right-card { position: relative; top: 0; }
+  .avatar { width: 72px; height: 72px; font-size: 22px; }
 }
