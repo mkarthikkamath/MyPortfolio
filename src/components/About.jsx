@@ -29,7 +29,7 @@ const About = () => {
 
             I take a pragmatic approach to development — delivering quickly, iterating based on feedback, and focusing on what drives the most value for users.
 
-            I'm always eager to take on new backend challenges, deepen my technical skills, and grow as an engineer.
+            I'm always eager to take on new opportunities, deepen my technical skills, and grow as an engineer.
           </p>
         </div>
       </div>
