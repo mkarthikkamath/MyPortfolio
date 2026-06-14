@@ -21,6 +21,16 @@ export const skills = {
 
 export const experiences = [
   {
+  title: "Software Engineer",
+  company: "Neuro Leap Corp",
+  location: "Remote",
+  date: "Oct 2025 – Present",
+  bullets: [
+    "Developed, tested, and debugged 150+ REST endpoints across 15+ backend modules, including assessment management, reporting, authentication, child-specialist workflows, sensor integrations, and PostgreSQL-backed services.",
+    "Preparing technical documentation and providing weekly engineering progress updates to stakeholders and leadership."
+  ]
+  },
+  {
     title: "Senior Software Engineer",
     company: "Tech Mahindra (Client - Expedia Group)",
     location: "Bangalore, India",

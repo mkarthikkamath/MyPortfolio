@@ -27,7 +27,7 @@ const About = () => {
 
             I've contributed to high-impact projects in the Insurance (Allstate) and Travel Technology (Expedia Group) industries.
 
-            I take a pragmatic approach to development — delivering quickly, iterating based on feedback, and focusing on what drives the most value for users.
+            I take a pragmatic approach to development by delivering quickly, iterating based on feedback, and focusing on what drives the most value for users.
 
             I'm always eager to take on new opportunities, deepen my technical skills, and grow as an engineer.
           </p>
