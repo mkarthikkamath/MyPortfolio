@@ -10,23 +10,23 @@ export const contact = {
 };
 
 export const skills = {
-  languages: ["Java", "Python", "Kotlin", "JavaScript", "HTML", "CSS"],
+  languages: ["Java", "Python", "Kotlin", "JavaScript", "HTML", "CSS", "Go"],
   frameworks: ["Spring Boot", "Spring MVC", "Hibernate", "React.js", "Flask", "FastAPI"],
-  apis: ["REST", "gRPC", "Protobuf"],
+  apis: ["REST APIs", "gRPC", "Protobuf"],
   databases: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  cloud: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "GitHub Actions", "CI/CD Pipelines", "Spinnaker"],
-  machinelearning: ["scikit-learn", "pandas", "NumPy", "Matplotlib", "Seaborn"],
-  others: ["Apache Kafka", "Prometheus", "Datadog", "Zipkin", "ELK Stack", "Splunk", "JUnit", "Mockito", "Agile/Scrum"],
+  cloud: ["AWS", "Docker", "Kubernetes", "Terraform", "Containerization", "Jenkins", "GitHub Actions", "CI/CD Pipelines", "Maven", "Git"],
+  machinelearning: ["GitHub Copilot", "ChatGPT", "scikit-learn", "pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook"],
+  others: ["Apache Kafka", "Spark Structured Streaming", "ETL Pipelines", "Prometheus", "Datadog", "Zipkin", "ELK Stack", "Splunk", "JUnit", "Mockito", "Agile/Scrum"],
 };
 
 export const experiences = [
   {
   title: "Software Engineer",
   company: "Neuro Leap Corp",
-  location: "Remote",
+  location: "Remote/San Jose",
   date: "Oct 2025 – Present",
   bullets: [
-    "Developed, tested, and debugged 150+ REST endpoints across 15+ backend modules, including assessment management, reporting, authentication, child-specialist workflows, sensor integrations, and PostgreSQL-backed services.",
+    "Developed, tested, and optimized 150+ REST APIs across 15+ backend modules, integrating external data sources and sensor payloads with PostgreSQL-backed services through data validation and transformation.",
     "Preparing technical documentation and providing weekly engineering progress updates to stakeholders and leadership."
   ]
   },
@@ -38,7 +38,7 @@ export const experiences = [
     bullets: [
       "Developed a Kotlin microservice (Price Summary) using gRPC with asynchronous programming (Kotlin Coroutines); deployed on Kubernetes and handled 66.97M monthly visits and 5M daily active users.",
       "Migrated multiple Expedia brand services from REST to gRPC (HTTP/2), reducing latency by ~40%, increasing throughput 3x, and cutting infrastructure costs by 30% through service consolidation.",
-      "Maintained 95% code coverage and ensured 99.9% uptime for pricing backend services used across multiple brands."
+      "Maintained 95% code coverage and 99.9% uptime by validating Kubernetes-based blue-green and canary deployments, ensuring scalable and reliable backend operations across multiple Expedia brands."
     ]
   },
   {
@@ -47,7 +47,7 @@ export const experiences = [
     location: "Mangalore, India",
     date: "Jul 2020 – May 2022",
     bullets: [
-      "Expanded and maintained backend APIs for AllState Boat products in the service layer supporting thousands of policy creations per day, performing eligibility validations and calculations for underwriting.",
+      "Expanded and maintained backend APIs for Allstate Boat products in the service layer supporting thousands of policy creations per day, performing eligibility validations and calculations for underwriting.",
       "Implemented payment validation features that enforced a 24-hour cooldown after three invalid attempts, reducing erroneous transactions by 30%.",
       "Built internal project & resource management services with Spring Boot and MongoDB to centralize reporting and improve data access efficiency."
     ]
@@ -58,7 +58,7 @@ export const experiences = [
     location: "Mangalore, India",
     date: "Jul 2018 – Jun 2020",
     bullets: [
-      "Developed backend APIs processing over 1000 of daily policy eligibility checks from third-party MVR/LIS reports, converting legacy XML to JSON, achieving 95%+ code coverage, monitoring via Splunk, and deploying with Jenkins",
+      "Developed backend APIs processing over 1000 of daily policy eligibility checks from third-party MVR/LIS reports, converting legacy XML to standardized JSON domain models, achieving 95%+ code coverage, monitoring via Splunk, and deploying with Jenkins",
       "Collaborated with frontend teams and product managers, conducted UAT testing, and delivered features across the full SDLC, improving high-risk policy detection by 20% and enabling seamless integration with upstream legacy systems."
     ]
   },
@@ -75,8 +75,8 @@ export const experiences = [
 
 export const projects = [
   {
-    title: "Real-Time Logs Threat Anomaly Detection",
-    desc: "Engineered a real-time log anomaly detection platform using Kafka ingestion, Logstash + Elasticsearch for processing/storage, Kibana for visualization; integrated LLMs for anomaly classification and alerts.",
+    title: "Real-Time Log Streaming for Threat Detection",
+    desc: "Designed and implemented a real-time streaming ETL pipeline using Apache Kafka for event ingestion, Spark Structured Streaming for data cleansing, feature engineering, transformation, and anomaly detection, and Logstash, Elasticsearch, and Kibana for indexing, visualization, and analytics, deployed on AWS cloud infrastructure with Kubernetes for scalability.",
     link: "https://github.com/SJSU-RealTime-Threat-Detection"
   },
   {
